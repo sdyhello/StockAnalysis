@@ -24,7 +24,7 @@ cutFile = (filePath)->
          fs.close(fd, (err)->
             if (err)
                return console.log(err)
-            console.log("#{filePath}文件关闭成功！")
+            console.log("#{filePath},#{fd}文件关闭成功！")
          )
       )
    )
@@ -33,6 +33,7 @@ fs.readdir(dir,
 (err, files)->
    for fileName in files
       if fileName.indexOf("zcfzb") isnt -1
-         console.log(dir + fileName)
+         # console.log(dir + fileName)
          cutFile(dir + fileName)
+
 )

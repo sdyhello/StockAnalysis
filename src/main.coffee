@@ -4,5 +4,5 @@ CashFlowStatement = require "./TableControl/CashFlowStatement.coffee"
 
 analysisDir = "../hs300"
 
-balanceSheet = new BalanceSheet(analysisDir,"601229")
+balanceSheet = new BalanceSheet(analysisDir,"000858")
 balanceSheet.printData()

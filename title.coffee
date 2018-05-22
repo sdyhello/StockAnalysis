@@ -1,4 +1,4 @@
-Moeny = [
+CashFlow = [
 	"报告日期",
 	"销售商品、提供劳务收到的现金(万元)",
 	"客户存款和同业存放款项净增加额(万元)",
@@ -90,7 +90,7 @@ Moeny = [
 	"现金等价物的期初余额(万元)",
 	"现金及现金等价物的净增加额(万元)",
 ]
-Profits = [
+Profit = [
 	"报告日期",
 	"营业总收入(万元)",
 	"营业收入(万元)",
@@ -139,7 +139,7 @@ Profits = [
 	"稀释每股收益"
 ]
 
-Assets = [
+Balance = [
 	"报告日期",
 	"货币资金(万元)",
 	"结算备付金(万元)",
@@ -251,12 +251,11 @@ Assets = [
 	"负债和所有者权益(或股东权益)总计(万元)",
 ]
 title = 
-	getAssetsTitle: ->
-		Assets
-	getProfitsTitle: ->
-		Profits
-
-	getMoneyTitle: ->
-		Moeny
+	getBalanceTitle: ->
+		Balance
+	getProfitTitle: ->
+		Profit
+	getCashFlowTitle: ->
+		CashFlow
 
 module.exports = title

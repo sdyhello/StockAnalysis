@@ -1,20 +1,21 @@
 fs      	= require 'fs'
 parse   	= require('csv').parse
-nameTable	= require "./nameTable.coffee"
-title 		= require "./title.coffee"
 
-class FileControl
-	constructor: (path, infoString)->
+class TableBase
+	constructor: (dir, stockCode)->
 		@_data = null
-		@_parseCsv(path)
-		@_initTable(infoString)
+		@_parseCsv(@getFilePath(dir, stockCode))
+
+	getFilePath: ->
+	getFirstColTitle: ->
 
 	_parseCsv: (path)->
 		data = fs.readFileSync path, { encoding: 'utf-8' }
-		console.log("data:#{data}")
-		parse data, {delimiter: ','}, (error, table)->
+		parse data, {delimiter: ','}, (error, table)=>
+			console.log("err:#{error}")
 			throw new Error(error) if error?
 			@_data = table
+			@_initTable(@getFirstColTitle())
 
 	_replaceNullCell: ->
 		for item, index in @_data
@@ -23,14 +24,18 @@ class FileControl
 					item[count] = 0
 		return
 
-	_replaceFirstCol : (infoString)->
+	_replaceFirstColTitle : (title)->
 		for item, index in @_data
-			item[0] = infoString[index]
+			item[0] = title[index]
 		return
 
-	_initTable: (infoString)->
-		@_replaceFirstCol(infoString)
+	_initTable: (title)->
+		@_replaceFirstColTitle(title)
 		@_replaceNullCell()
+		# @printData()
+
+	printData: ->
+		console.log(JSON.stringify @_data)
 
 	getTypeRowNum : (typeStr)->
 		typeNum = 0
@@ -45,12 +50,4 @@ class FileControl
 		table = @_data[rowNum]
 		table.slice(1, @_maxYears + 1)
 
-	getStockInfoTable : (directory)->
-		table = []
-		if directory is "300"
-			table = nameTable.getName300()
-		else
-			table = nameTable.getName500()
-		return table
-
-module.exports = FileControl
+module.exports = TableBase

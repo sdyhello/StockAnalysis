@@ -32,7 +32,7 @@ class TableBase
 	_initTable: (title)->
 		@_replaceFirstColTitle(title)
 		@_replaceNullCell()
-		# @printData()
+		@printData()
 
 	printData: ->
 		console.log(JSON.stringify @_data)

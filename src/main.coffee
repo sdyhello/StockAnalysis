@@ -7,14 +7,13 @@ analysisDir = "../hs300"
 
 BalanceSheetTable = []
 ProfitStatementTable = []
-CashFlowStatement = []
+CashFlowStatementTable = []
 
 createClass = (stockCode)->
-	stockCode = stockCode.substring(-6)
-	console.log(stockCode)
+	stockCode = stockCode.substring(6, 12)
 	BalanceSheetTable.push new BalanceSheet(analysisDir, stockCode)
 	ProfitStatementTable.push new ProfitStatement(analysisDir, stockCode)
-	CashFlowStatement.push new CashFlowStatement(analysisDir, stockCode)
+	CashFlowStatementTable.push new CashFlowStatement(analysisDir, stockCode)
 
 fs.readdir(analysisDir,
 (err, files)->

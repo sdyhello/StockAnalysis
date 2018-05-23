@@ -44,7 +44,6 @@ class TableBase
 			for info in infoTable
 				if info[0].indexOf("" + stockCode) isnt -1
 					@_stockInfo = info
-					console.log("stock info :#{@_stockInfo}")
 					break
 		return
 

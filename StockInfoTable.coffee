@@ -5300,16 +5300,16 @@ nameAllaA = [
 
 ]
 nameTable = 
-	getName300: ->
+	getHs300: ->
 		name300
 
-	getName500: ->
+	getZz500: ->
 		name500
 
-	getNamezz1000: ->
+	getZz1000: ->
 		namezz1000
 
-	getNameAllA : ->
+	getAllA : ->
 		nameAllA
 		
 module.exports = nameTable
